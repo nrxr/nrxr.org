@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>meta on nrxr&#39;s technical weblog</title>
+    <link>http://localhost:1313/categories/meta/</link>
+    <description>Recent content in meta on nrxr&#39;s technical weblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 02 Oct 2019 18:16:14 -0400</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git Init</title>
+      <link>http://localhost:1313/post/git-init/</link>
+      <pubDate>Wed, 02 Oct 2019 18:16:14 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/git-init/</guid>
+      <description>So, this is the initial post for this weblog. The mission is to share technical things I&amp;rsquo;ve learned doing stuff, right now the focus is Go, Docker and bash, but it&amp;rsquo;s not a hard limit on what will be written here.</description>
+    </item>
+    
+  </channel>
+</rss>

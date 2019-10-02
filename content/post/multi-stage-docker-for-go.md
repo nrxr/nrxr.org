@@ -1,7 +1,7 @@
 ---
 title: "Using multi-stage Dockerfile for small Go docker images"
 date: 2019-10-02T18:39:10-04:00
-draft: true
+draft: false
 keywords: ["docker", "how to"]
 description: ""
 tags: ["docker", "go", "deployment", "dockerfile"]

@@ -57,7 +57,7 @@ A simple Dockerfile with such characteristics would look like this:
 
     WORKDIR /opt/app
 
-    run apk --no-cache update && \
+    RUN apk --no-cache update && \
           apk --no-cache add git ca-certificates && \
           rm -rf /var/cache/apk/*
 

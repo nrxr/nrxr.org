@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on nrxr&#39;s technical weblog</title>
-    <link>http://localhost:1313/categories/docker/</link>
-    <description>Recent content in docker on nrxr&#39;s technical weblog</description>
+    <title>docker on nrxr&#39;s weblog</title>
+    <link>https://nrxr.org/categories/docker/</link>
+    <description>Recent content in docker on nrxr&#39;s weblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 02 Oct 2019 18:39:10 -0400</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nrxr.org/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using multi-stage Dockerfile for small Go docker images</title>
-      <link>http://localhost:1313/post/multi-stage-docker-for-go/</link>
+      <link>https://nrxr.org/post/multi-stage-docker-for-go/</link>
       <pubDate>Wed, 02 Oct 2019 18:39:10 -0400</pubDate>
       
-      <guid>http://localhost:1313/post/multi-stage-docker-for-go/</guid>
+      <guid>https://nrxr.org/post/multi-stage-docker-for-go/</guid>
       <description>This post will show you how to write a multi-stage Dockerfile and end up with a very small Docker image with just your application binary.
 One of the very interesting things of using a compiled programming language like Go is that you end up with tiny binaries, which then you can distribute as such. If combined with Docker you can end up with very tiny images that are faster and cheaper to distribute.</description>
     </item>

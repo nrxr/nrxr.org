@@ -45,14 +45,14 @@ One of the very interesting things of using a compiled programming language like
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/multi-stage-docker-for-go/" />
 <meta property="article:published_time" content="2019-10-02T18:39:10-04:00" />
-<meta property="article:modified_time" content="2019-10-02T19:40:13-04:00" />
+<meta property="article:modified_time" content="2019-10-02T21:08:09-04:00" />
 <meta itemprop="name" content="Using multi-stage Dockerfile for small Go docker images">
 <meta itemprop="description" content="This post will show you how to write a multi-stage Dockerfile and end up with a very small Docker image with just your application binary.
 One of the very interesting things of using a compiled programming language like Go is that you end up with tiny binaries, which then you can distribute as such. If combined with Docker you can end up with very tiny images that are faster and cheaper to distribute.">
 
 
 <meta itemprop="datePublished" content="2019-10-02T18:39:10-04:00" />
-<meta itemprop="dateModified" content="2019-10-02T19:40:13-04:00" />
+<meta itemprop="dateModified" content="2019-10-02T21:08:09-04:00" />
 <meta itemprop="wordCount" content="597">
 
 
@@ -76,7 +76,7 @@ One of the very interesting things of using a compiled programming language like
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">nrxr</a>
+    <a href="/" class="logo">nrxr&#39;s weblog</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -100,7 +100,7 @@ One of the very interesting things of using a compiled programming language like
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">nrxr</a>
+  <a href="/" class="logo">nrxr&#39;s weblog</a>
 </div>
 
 <nav class="site-navbar">
@@ -206,7 +206,7 @@ ENV GOOS=linux \
 
 WORKDIR /opt/app
 
-run apk --no-cache update &amp;&amp; \
+RUN apk --no-cache update &amp;&amp; \
       apk --no-cache add git ca-certificates &amp;&amp; \
       rm -rf /var/cache/apk/*
 
@@ -292,8 +292,8 @@ decrease 5MB of the final size.</p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        Wed, Oct 2 2019 19:40
-        <a href="https://github.com/nrxr/nrxr.org/commit/9d12afcf888953705d5d11b96ee41353e05b7185" title="config: change publishdir to docs">(9d12afc)</a>
+        Wed, Oct 2 2019 21:08
+        <a href="https://github.com/nrxr/nrxr.org/commit/edf63f66fc8b5611439dc0dc50094c9f9def5554" title="post: fix typo on Dockerfile, run -&gt; RUN">(edf63f6)</a>
     </span>
   </p>
   

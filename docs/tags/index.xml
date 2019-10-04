@@ -6,10 +6,37 @@
     <description>Recent content in Tags on nrxr@journal:~$</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Oct 2019 18:39:10 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 03 Oct 2019 21:20:40 -0400</lastBuildDate>
     
 	<atom:link href="https://nrxr.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>https://nrxr.org/tags/go/</link>
+      <pubDate>Thu, 03 Oct 2019 21:20:40 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://nrxr.org/tags/golang/</link>
+      <pubDate>Thu, 03 Oct 2019 21:20:40 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pointers</title>
+      <link>https://nrxr.org/tags/pointers/</link>
+      <pubDate>Thu, 03 Oct 2019 21:20:40 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/pointers/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>deployment</title>
@@ -35,15 +62,6 @@
       <pubDate>Wed, 02 Oct 2019 18:39:10 -0400</pubDate>
       
       <guid>https://nrxr.org/tags/dockerfile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://nrxr.org/tags/go/</link>
-      <pubDate>Wed, 02 Oct 2019 18:39:10 -0400</pubDate>
-      
-      <guid>https://nrxr.org/tags/go/</guid>
       <description></description>
     </item>
     

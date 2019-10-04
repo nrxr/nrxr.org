@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nrxr.org/" />
 
-<meta property="og:updated_time" content="2019-10-02T18:39:10-04:00" />
+<meta property="og:updated_time" content="2019-10-03T21:20:40-04:00" />
 <meta itemprop="name" content="nrxr@journal:~$">
 <meta itemprop="description" content="technical journal for nrxr">
 
@@ -112,6 +112,30 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/copying-pointers-in-go/">Copying Pointers in Go</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> Thu, Oct 3 2019 21:20 </span>
+      <div class="post-category">
+          <a href="/categories/go/"> go </a>
+          </div>
+        <span class="more-meta"> 164 words </span>
+        <span class="more-meta"> 1 min read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Over a year ago I was trying to make a copy of a *url.URL and ended up with this quite nasty way to do so. I even applied this to maskpass, a small package that masks the password of an url.URL to make it log-friendly.
+But today, looking for a nice clean way to do so in a PR being sent to Go I realized tmp := *src does the work nicely.
+    </div>
+    <div class="read-more">
+      <a href="/post/copying-pointers-in-go/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/multi-stage-docker-for-go/">Using multi-stage Dockerfile for small Go docker images</a></h1>

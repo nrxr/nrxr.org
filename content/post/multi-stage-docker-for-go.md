@@ -4,7 +4,7 @@ date: 2019-10-02T18:39:10-04:00
 draft: false
 keywords: ["docker", "how to"]
 description: ""
-tags: ["docker", "go", "deployment", "dockerfile"]
+tags: ["docker", "go", "golang", "deployment", "dockerfile"]
 categories: ["docker", "go"]
 
 # You can also close(false) or open(true) something for this content.

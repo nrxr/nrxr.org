@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using POSIX sed for infile substitution - nrxr@journal:~$</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="nrxr" /><meta name="description" content="Something I learned when I started writing tools for developers in companies is that there&amp;rsquo;s GNU sed, BSD sed and that they are not compatible for something that I tend to write a lot: infile substitution.
+I would find myself doing conditionals, finding out if it was running in a Darwin/BSD or if it was running on Linux. Then there was the bit where some people would install gnu-sed from Homebrew in their macs and add the gnubin path to their $PATH which then would break my conditionals because they would be using GNU sed in which I thought were BSD sed." /><meta name="keywords" content="sed, scripting, posix" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.58.3 with theme even" />
+
+
+<link rel="canonical" href="https://nrxr.org/post/using-posix-sed-infile-substitution/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.13a5884b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Using POSIX sed for infile substitution" />
+<meta property="og:description" content="Something I learned when I started writing tools for developers in companies is that there&rsquo;s GNU sed, BSD sed and that they are not compatible for something that I tend to write a lot: infile substitution.
+I would find myself doing conditionals, finding out if it was running in a Darwin/BSD or if it was running on Linux. Then there was the bit where some people would install gnu-sed from Homebrew in their macs and add the gnubin path to their $PATH which then would break my conditionals because they would be using GNU sed in which I thought were BSD sed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nrxr.org/post/using-posix-sed-infile-substitution/" />
+<meta property="article:published_time" content="2019-10-05T08:58:20-04:00" />
+<meta property="article:modified_time" content="2019-10-05T15:45:45-04:00" />
+<meta itemprop="name" content="Using POSIX sed for infile substitution">
+<meta itemprop="description" content="Something I learned when I started writing tools for developers in companies is that there&rsquo;s GNU sed, BSD sed and that they are not compatible for something that I tend to write a lot: infile substitution.
+I would find myself doing conditionals, finding out if it was running in a Darwin/BSD or if it was running on Linux. Then there was the bit where some people would install gnu-sed from Homebrew in their macs and add the gnubin path to their $PATH which then would break my conditionals because they would be using GNU sed in which I thought were BSD sed.">
+
+
+<meta itemprop="datePublished" content="2019-10-05T08:58:20-04:00" />
+<meta itemprop="dateModified" content="2019-10-05T15:45:45-04:00" />
+<meta itemprop="wordCount" content="282">
+
+
+
+<meta itemprop="keywords" content="sed,scripting,posix," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using POSIX sed for infile substitution"/>
+<meta name="twitter:description" content="Something I learned when I started writing tools for developers in companies is that there&rsquo;s GNU sed, BSD sed and that they are not compatible for something that I tend to write a lot: infile substitution.
+I would find myself doing conditionals, finding out if it was running in a Darwin/BSD or if it was running on Linux. Then there was the bit where some people would install gnu-sed from Homebrew in their macs and add the gnubin path to their $PATH which then would break my conditionals because they would be using GNU sed in which I thought were BSD sed."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">nrxr@journal:~$</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">nrxr@journal:~$</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using POSIX sed for infile substitution</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sat, Oct 5 2019 08:58 </span>
+        <div class="post-category">
+            <a href="/categories/scripting/"> scripting </a>
+            </div>
+          <span class="more-meta"> 282 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      <p>Something I learned when I started writing tools for developers in companies is
+that there&rsquo;s <a href="https://www.unix.com/man-page/Linux/1/sed/">GNU <code>sed</code></a>, <a href="https://www.unix.com/man-page/FreeBSD/1/sed/">BSD
+<code>sed</code></a> and that they are not
+compatible for something that I tend to write a lot: infile substitution.</p>
+
+<p>I would find myself doing conditionals, finding out if it was running in a
+Darwin/BSD or if it was running on Linux. Then there was the bit where some
+people would install <code>gnu-sed</code> from Homebrew in their macs and add the gnubin
+path to their <code>$PATH</code> which then would break my conditionals because they would
+be using GNU <code>sed</code> in which I thought were BSD <code>sed</code>.</p>
+
+<p>This made really hard building scripts that would work both in all developers
+machines and deployment servers.</p>
+
+<p>In goes <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html">POSIX
+<code>sed</code></a>. So
+there&rsquo;s a &ldquo;standard&rdquo; which not many people limits itself to use, because using
+<code>-i</code> is too convenient, which BSD and GNU both implement yet differently (one
+requires <code>-i ''</code> the other either <code>-i</code> or <code>-i''</code> so both implementations are
+incompatible between themselves). But POSIX <code>sed</code> only has <code>-e</code>, <code>-f</code> and <code>-n</code>.</p>
+
+<p>So easy, right? Let&rsquo;s just do a <code>sed</code> and pipe it out to the same file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">sed -e &#34;s/foo/bar/&#34; &#34;filename&#34; &gt; &#34;filename&#34;</pre></td></tr></table>
+</div>
+</div>
+<p>Done. Is it? No! If you check the content of the file it will be blank. So you
+need to create a temp file, modify it and then remove the temp file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">sed -e &#34;s/foo/bar/&#34; &#34;filename&#34; &gt; &#34;filename.tmp&#34;
+mv &#34;filename.tmp&#34; &#34;filename&#34;</pre></td></tr></table>
+</div>
+</div>
+<p>So it&rsquo;s basically your call to decide if you can write an extra line of code on
+your scripts or write a whole logic to figure out what <code>sed</code> is being used and
+if it should be <code>-i</code> or <code>-i ''</code>.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">nrxr</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Sat, Oct 5 2019 15:45
+        <a href="https://github.com/nrxr/nrxr.org/commit/87fb728fe65d2842a6f2b4705006fb30886d5806" title="post: add &#34;using posix sed for infile substitution&#34;">(87fb728)</a>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/sed/">sed</a>
+          <a href="/tags/scripting/">scripting</a>
+          <a href="/tags/posix/">posix</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/copying-pointers-in-go/">
+            <span class="next-text nav-default">Copying Pointers in Go</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:nrxr.humandeletefromthedottotheat@disroot.org" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/iamnrxr" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/nrxr" class="iconfont icon-github" title="github"></a>
+      <a href="https://instagram.com/iamnrxr" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://nrxr.org/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">nrxr</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

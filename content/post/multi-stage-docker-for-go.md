@@ -52,7 +52,8 @@ A simple Dockerfile with such characteristics would look like this:
 
     FROM golang:alpine AS builder
 
-    ENV GOOS=linux \
+    ENV CGO_ENABLED=0 \
+      GOOS=linux \
       GO111MODULE=on
 
     WORKDIR /opt/app

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on nrxr@journal:~$</title>
@@ -6,10 +6,37 @@
     <description>Recent content in Tags on nrxr@journal:~$</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Oct 2019 08:58:20 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2020 22:22:43 -0400</lastBuildDate>
     
 	<atom:link href="https://nrxr.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>balance</title>
+      <link>https://nrxr.org/tags/balance/</link>
+      <pubDate>Thu, 30 Jul 2020 22:22:43 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/balance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://nrxr.org/tags/life/</link>
+      <pubDate>Thu, 30 Jul 2020 22:22:43 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>work</title>
+      <link>https://nrxr.org/tags/work/</link>
+      <pubDate>Thu, 30 Jul 2020 22:22:43 -0400</pubDate>
+      
+      <guid>https://nrxr.org/tags/work/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>posix</title>

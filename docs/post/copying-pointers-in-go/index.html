@@ -24,7 +24,7 @@ But today, looking for a nice clean way to do so in a PR being sent to Go I real
 
 
 
-<meta name="generator" content="Hugo 0.58.3 with theme even" />
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
 
 
 <link rel="canonical" href="https://nrxr.org/post/copying-pointers-in-go/" />
@@ -49,11 +49,9 @@ But today, looking for a nice clean way to do so in a PR being sent to Go I real
 <meta itemprop="name" content="Copying Pointers in Go">
 <meta itemprop="description" content="Over a year ago I was trying to make a copy of a *url.URL and ended up with this quite nasty way to do so. I even applied this to maskpass, a small package that masks the password of an url.URL to make it log-friendly.
 But today, looking for a nice clean way to do so in a PR being sent to Go I realized tmp := *src does the work nicely.">
-
-
 <meta itemprop="datePublished" content="2019-10-03T21:20:40-04:00" />
 <meta itemprop="dateModified" content="2019-10-03T21:30:07-04:00" />
-<meta itemprop="wordCount" content="164">
+<meta itemprop="wordCount" content="151">
 
 
 
@@ -131,7 +129,7 @@ But today, looking for a nice clean way to do so in a PR being sent to Go I real
         <div class="post-category">
             <a href="/categories/go/"> go </a>
             </div>
-          <span class="more-meta"> 164 words </span>
+          <span class="more-meta"> 151 words </span>
           <span class="more-meta"> 1 min read </span>
         
       </div>
@@ -145,47 +143,26 @@ so</a>.
 I even <a href="https://github.com/nrxr/maskpass/blob/master/maskpass.go#L22">applied this to
 <code>maskpass</code></a>, a
 small package that masks the password of an url.URL to make it log-friendly.</p>
-
 <p>But today, looking for a nice clean way to do so in a PR being sent to Go I
 realized <code>tmp := *src</code> does the work nicely.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
+<pre><code>package main
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;fmt&#34;</span>
-  <span class="s">&#34;net/url&#34;</span>
-<span class="p">)</span>
+import (
+  &quot;fmt&quot;
+  &quot;net/url&quot;
+)
 
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">src</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;http://user:password@host.tld/&#34;</span><span class="p">)</span>
-  <span class="nx">tmp</span> <span class="o">:=</span> <span class="o">*</span><span class="nx">src</span>
-  <span class="nx">tmp</span><span class="p">.</span><span class="nx">User</span> <span class="p">=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">UserPassword</span><span class="p">(</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Username</span><span class="p">(),</span> <span class="s">&#34;xxxxx&#34;</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s, %s&#34;</span><span class="p">,</span> <span class="nx">src</span><span class="p">.</span><span class="nf">String</span><span class="p">(),</span> <span class="nx">tmp</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span>
-<span class="p">}</span></pre></td></tr></table>
-</div>
-</div>
+func main() {
+  src, _ := url.Parse(&quot;http://user:password@host.tld/&quot;)
+  tmp := *src
+  tmp.User = url.UserPassword(tmp.User.Username(), &quot;xxxxx&quot;)
+  fmt.Printf(&quot;%s, %s&quot;, src.String(), tmp.String())
+}
+</code></pre>
 <p><a href="https://play.golang.org/p/F4vaqN3wC_H">https://play.golang.org/p/F4vaqN3wC_H</a></p>
-
 <p>What this shows is that changing values in <code>tmp</code> won&rsquo;t change the values in
 <code>src</code> so you have effectively copied the values of the source pointer to a new
 pointer.</p>
-
 <p>So, if you&rsquo;re looking for a clean way to copy the value of a pointer in Go,
 hopefully, this will help you.</p>
 
@@ -258,7 +235,8 @@ hopefully, this will help you.</p>
 
   <span class="copyright-year">
     &copy; 
-    2019
+    2019 - 
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

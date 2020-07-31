@@ -24,7 +24,7 @@ I would find myself doing conditionals, finding out if it was running in a Darwi
 
 
 
-<meta name="generator" content="Hugo 0.58.3 with theme even" />
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
 
 
 <link rel="canonical" href="https://nrxr.org/post/using-posix-sed-infile-substitution/" />
@@ -49,11 +49,9 @@ I would find myself doing conditionals, finding out if it was running in a Darwi
 <meta itemprop="name" content="Using POSIX sed for infile substitution">
 <meta itemprop="description" content="Something I learned when I started writing tools for developers in companies is that there&rsquo;s GNU sed, BSD sed and that they are not compatible for something that I tend to write a lot: infile substitution.
 I would find myself doing conditionals, finding out if it was running in a Darwin/BSD or if it was running on Linux. Then there was the bit where some people would install gnu-sed from Homebrew in their macs and add the gnubin path to their $PATH which then would break my conditionals because they would be using GNU sed in which I thought were BSD sed.">
-
-
 <meta itemprop="datePublished" content="2019-10-05T08:58:20-04:00" />
 <meta itemprop="dateModified" content="2019-10-05T15:45:45-04:00" />
-<meta itemprop="wordCount" content="282">
+<meta itemprop="wordCount" content="279">
 
 
 
@@ -131,7 +129,7 @@ I would find myself doing conditionals, finding out if it was running in a Darwi
         <div class="post-category">
             <a href="/categories/scripting/"> scripting </a>
             </div>
-          <span class="more-meta"> 282 words </span>
+          <span class="more-meta"> 279 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -143,44 +141,27 @@ I would find myself doing conditionals, finding out if it was running in a Darwi
 that there&rsquo;s <a href="https://www.unix.com/man-page/Linux/1/sed/">GNU <code>sed</code></a>, <a href="https://www.unix.com/man-page/FreeBSD/1/sed/">BSD
 <code>sed</code></a> and that they are not
 compatible for something that I tend to write a lot: infile substitution.</p>
-
 <p>I would find myself doing conditionals, finding out if it was running in a
 Darwin/BSD or if it was running on Linux. Then there was the bit where some
 people would install <code>gnu-sed</code> from Homebrew in their macs and add the gnubin
 path to their <code>$PATH</code> which then would break my conditionals because they would
 be using GNU <code>sed</code> in which I thought were BSD <code>sed</code>.</p>
-
 <p>This made really hard building scripts that would work both in all developers
 machines and deployment servers.</p>
-
 <p>In goes <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html">POSIX
 <code>sed</code></a>. So
 there&rsquo;s a &ldquo;standard&rdquo; which not many people limits itself to use, because using
 <code>-i</code> is too convenient, which BSD and GNU both implement yet differently (one
 requires <code>-i ''</code> the other either <code>-i</code> or <code>-i''</code> so both implementations are
 incompatible between themselves). But POSIX <code>sed</code> only has <code>-e</code>, <code>-f</code> and <code>-n</code>.</p>
-
 <p>So easy, right? Let&rsquo;s just do a <code>sed</code> and pipe it out to the same file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">sed -e &#34;s/foo/bar/&#34; &#34;filename&#34; &gt; &#34;filename&#34;</pre></td></tr></table>
-</div>
-</div>
+<pre><code>sed -e &quot;s/foo/bar/&quot; &quot;filename&quot; &gt; &quot;filename&quot;
+</code></pre>
 <p>Done. Is it? No! If you check the content of the file it will be blank. So you
 need to create a temp file, modify it and then remove the temp file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">sed -e &#34;s/foo/bar/&#34; &#34;filename&#34; &gt; &#34;filename.tmp&#34;
-mv &#34;filename.tmp&#34; &#34;filename&#34;</pre></td></tr></table>
-</div>
-</div>
+<pre><code>sed -e &quot;s/foo/bar/&quot; &quot;filename&quot; &gt; &quot;filename.tmp&quot;
+mv &quot;filename.tmp&quot; &quot;filename&quot;
+</code></pre>
 <p>So it&rsquo;s basically your call to decide if you can write an extra line of code on
 your scripts or write a whole logic to figure out what <code>sed</code> is being used and
 if it should be <code>-i</code> or <code>-i ''</code>.</p>
@@ -212,7 +193,11 @@ if it should be <code>-i</code> or <code>-i ''</code>.</p>
           <a href="/tags/posix/">posix</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/break-the-cycle/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Break the Cycle</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/copying-pointers-in-go/">
             <span class="next-text nav-default">Copying Pointers in Go</span>
             <span class="next-text nav-mobile">Next</span>
@@ -250,7 +235,8 @@ if it should be <code>-i</code> or <code>-i ''</code>.</p>
 
   <span class="copyright-year">
     &copy; 
-    2019
+    2019 - 
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

@@ -68,3 +68,5 @@ fields:
   - type: text
     name: options
     label: options
+pages:
+- content/post/styles-are-important.md

@@ -22,7 +22,7 @@ enable = false
 options = ""
 
 +++
-[The UN has given license and is encouraging China to do surveillance system and collect data globally.]() The US doing surveillance and collecting data globally was an issue already, now China doing it is way worst.
+[The UN has given license and is encouraging China to use its surveillance system and collect data globally.](https://www.wsj.com/articles/china-uses-the-u-n-to-expand-its-surveillance-reach-11602111456) The US doing surveillance and collecting data globally was an issue already, now China doing it is way worst.
 
 China is a dictatorship and even when the US has been opaque about the data they are collecting and how is being stored we do know China is completely arbitrary and opaque. In the US there's a separation of powers between institutions and a chance to actually clean up and learn about how the data is being used.
 

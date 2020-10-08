@@ -2,7 +2,7 @@
 autoCollapseToc = false
 categories = ["go"]
 comment = false
-date = 2020-10-08T04:00:00Z
+date = 2020-10-08T17:24:00Z
 description = ""
 hiddenFromHomePage = false
 keywords = ["go", "style", "code"]

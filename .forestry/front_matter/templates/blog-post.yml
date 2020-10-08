@@ -54,6 +54,7 @@ fields:
   - type: boolean
     name: enable
     label: enable
+    default: false
   - type: text
     name: options
     label: options

@@ -12,7 +12,7 @@ mathjaxEnableSingleDollar = false
 postMetaInFooter = true
 reward = false
 tags = ["china", "surveillance", "data"]
-title = "US collecting global data is an issue, China doing it with China's permission is bigger"
+title = "US collecting global data is an issue, China doing it with UN's permission is bigger"
 toc = false
 [flowchartDiagrams]
 enable = false

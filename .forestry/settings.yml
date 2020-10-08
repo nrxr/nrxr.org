@@ -9,8 +9,6 @@ sections:
   label: Links
   create: all
   match: "**/*"
-- type: heading
-  label: Heading
 - type: directory
   path: content
   label: Pages

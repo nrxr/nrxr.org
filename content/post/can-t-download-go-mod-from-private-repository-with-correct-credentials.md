@@ -2,8 +2,9 @@
 autoCollapseToc = false
 categories = ["go"]
 comment = false
-date = ""
+date = 2022-08-01T03:00:00Z
 description = ""
+draft = true
 hiddenFromHomePage = false
 keywords = ["go"]
 mathjax = false

@@ -69,6 +69,7 @@ fields:
     name: options
     label: options
 pages:
+- content/post/can-t-download-go-mod-from-private-repository-with-correct-credentials.md
 - content/post/mass-surveillance-via-facial-recognition-comes-to-latinamerica.md
 - content/post/people-do-not-understand-what-capitalism-means.md
 - content/post/politics-is-visceral.md

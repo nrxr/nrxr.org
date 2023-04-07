@@ -1,0 +1,29 @@
+{
+  "name": "nrxr.org",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tinacms dev -c \"hugo server -D\"",
+    "build": "tinacms build && hugo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrxr/nrxr.org.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrxr/nrxr.org/issues"
+  },
+  "homepage": "https://github.com/nrxr/nrxr.org#readme",
+  "dependencies": {
+    "@tinacms/cli": "^1.5.5",
+    "tinacms": "^1.4.5"
+  }
+}

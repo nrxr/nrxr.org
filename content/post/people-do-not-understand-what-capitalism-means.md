@@ -1,27 +1,21 @@
-+++
-autoCollapseToc = false
-categories = ["politics"]
-comment = false
-date = 2020-11-02T04:00:00Z
-description = ""
-hiddenFromHomePage = false
-keywords = ["capitalism", "politics"]
-mathjax = false
-mathjaxEnableAutoNumber = false
-mathjaxEnableSingleDollar = false
-postMetaInFooter = false
-reward = false
-tags = ["capitalism", "politics"]
-title = "People do not understand what capitalism means"
-toc = false
-[flowchartDiagrams]
-enable = false
-options = ""
-[sequenceDiagrams]
-enable = false
-options = ""
+---
+autoCollapseToc: false
+categories: ["politics"]
+comment: false
+date: 2020-11-02T04:00:00Z
+description: ""
+hiddenFromHomePage: false
+keywords: ["capitalism", "politics"]
+postMetaInFooter: false
+reward: false
+tags: ["capitalism", "politics"]
+title: "People do not understand what capitalism means"
+toc: false
+enable: false
+options: ""
 
-+++
+---
+
 Capitalism does not means being ruled by people having money nor the government favoring certain people to have money (that last one, actually, is the consequence of economy planning).
 
 I keep finding troubling mixed references to fascism and capitalism, as if they were the same when they are actually the opposite.

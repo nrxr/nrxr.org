@@ -1,27 +1,21 @@
-+++
-autoCollapseToc = false
-categories = ["config", "git", "go"]
-comment = false
-date = 2022-08-02T21:00:00Z
-description = ""
-hiddenFromHomePage = false
-keywords = []
-mathjax = false
-mathjaxEnableAutoNumber = false
-mathjaxEnableSingleDollar = false
-postMetaInFooter = false
-reward = false
-tags = ["config", "git", "go"]
-title = "Configuring Git and Go for private modules without netrc"
-toc = false
-[flowchartDiagrams]
-enable = false
-options = ""
-[sequenceDiagrams]
-enable = false
-options = ""
+---
+autoCollapseToc: false
+categories: ["config", "git", "go"]
+comment: false
+date: 2022-08-02T21:00:00Z
+description: ""
+hiddenFromHomePage: false
+keywords: []
+mathjax: false
+mathjaxEnableAutoNumber: false
+mathjaxEnableSingleDollar: false
+postMetaInFooter: false
+reward: false
+tags: ["config", "git", "go"]
+title: "Configuring Git and Go for private modules without netrc"
+toc: false
 
-+++
+---
 So far, I had used the [personal tokens method for authorizing myself against GitHub when working with private modules](https://go.dev/doc/faq#git_https), but now I figured out how to make it work directly with Git and my SSH config already existing.
 
 TL;DR;

@@ -1,27 +1,21 @@
-+++
-autoCollapseToc = false
-categories = ["go"]
-comment = false
-date = 2020-10-08T17:24:00Z
-description = ""
-hiddenFromHomePage = false
-keywords = ["go", "style", "code"]
-mathjax = false
-mathjaxEnableAutoNumber = false
-mathjaxEnableSingleDollar = false
-postMetaInFooter = true
-reward = false
-tags = ["code", "style", "go"]
-title = "Styles Are Important"
-toc = false
-[flowchartDiagrams]
-enable = false
-options = ""
-[sequenceDiagrams]
-enable = false
-options = ""
+---
+autoCollapseToc: false
+categories: ["go"]
+comment: false
+date: 2020-10-08T17:24:00Z
+description: ""
+hiddenFromHomePage: false
+keywords: ["go", "style", "code"]
+mathjax: false
+mathjaxEnableAutoNumber: false
+mathjaxEnableSingleDollar: false
+postMetaInFooter: true
+reward: false
+tags: ["code", "style", "go"]
+title: "Styles Are Important"
+toc: false
 
-+++
+---
 I've been reviewing a lot of code from candidates for the company I work at and have been discussing about art with some friends. I started to think a lot how I consider code-style very important and a form of art when done correctly.
 
 Styling goes around organizing, writing correctly, naming correctly, documenting correctly.

@@ -1,27 +1,22 @@
-+++
-autoCollapseToc = false
-categories = ["go"]
-comment = false
-date = 2022-08-01T03:00:00Z
-description = ""
-hiddenFromHomePage = false
-keywords = ["go"]
-mathjax = false
-mathjaxEnableAutoNumber = false
-mathjaxEnableSingleDollar = false
-postMetaInFooter = false
-reward = false
-tags = ["go"]
-title = "Can't download go mod from private repository with correct credentials"
-toc = false
-[flowchartDiagrams]
-enable = false
-options = ""
-[sequenceDiagrams]
-enable = false
-options = ""
+---
+autoCollapseToc: false
+categories: ["go"]
+comment: false
+date: 2022-08-01T03:00:00Z
+description: ""
+hiddenFromHomePage: false
+keywords: ["go"]
+mathjax: false
+mathjaxEnableAutoNumber: false
+mathjaxEnableSingleDollar: false
+postMetaInFooter: false
+reward: false
+tags: ["go"]
+title: "Can't download go mod from private repository with correct credentials"
+toc: false
 
-+++
+---
+
 Today I tried to run a `go mod tidy` in my machine and suddendly failed:
 
 ```

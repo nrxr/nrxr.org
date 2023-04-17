@@ -26,9 +26,7 @@ func (d Day) String() string {
 ```
 
 \
-And if values were not continuous I would just use a `map[string]Type` like what [I proposed a few days back in a `grafana/k6` issue](https://github.com/grafana/k6/issues/2998#issuecomment-1501251892):\
-\
-
+And if values were not continuous I would just use a `map[string]Type` like what [I proposed a few days back in a `grafana/k6` issue](https://github.com/grafana/k6/issues/2998#issuecomment-1501251892):
 
 ```go
 // systemtag.go
@@ -53,7 +51,7 @@ func(st SystemTag) String() string {
 }
 ```
 
-The response about performance of that approach from a maintainer made me actually benchmark it.
+The [response about performance of that approach from a maintainer](https://github.com/grafana/k6/issues/2998#issuecomment-1501563052) made me actually benchmark it.
 
 As a developer, the jump from a slice of strings to a map of strings was not that big, in my head the performance hit would not be really important. Yet, it definitely is and looking in the stdlib, I found there's a different approach that does not provides the speed of a slice but it's pretty close.
 
@@ -91,13 +89,12 @@ A snippet of the results:
 ```console
 goos: darwin
 goarch: arm64
-pkg: github.com/nrxr/enumbenchmarks/combined/executionstatus
-BenchmarkExecutionStatus_String_LastItem-8     	1000000000	         0.5797 ns/op
-BenchmarkExecutionStatusString_LastItem-8      	440918524	         2.727 ns/op
 pkg: github.com/nrxr/enumbenchmarks/enumer/executionstatus
 BenchmarkExecutionStatus_String_FirstItem-8    	1000000000	         0.9775 ns/op
 BenchmarkExecutionStatusString_MiddleItem-8    	132739348	         9.036 ns/op
-PASS
+pkg: github.com/nrxr/enumbenchmarks/combined/executionstatus
+BenchmarkExecutionStatus_String_LastItem-8     	1000000000	         0.5797 ns/op
+BenchmarkExecutionStatusString_LastItem-8      	440918524	         2.727 ns/op
 pkg: github.com/nrxr/enumbenchmarks/idiomatic/executionstatus
 BenchmarkExecutionStatus_String_MiddleItem-8   	1000000000	         0.6257 ns/op
 BenchmarkExecutionStatusString_LastItem-8      	439873963	         2.725 ns/op

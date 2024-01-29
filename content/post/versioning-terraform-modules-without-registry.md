@@ -1,6 +1,6 @@
 ---
 title: Versioning Terraform modules without a registry, but Git
-date: date
+date: 2024-01-29T14:35:49Z
 tags:
   - Terraform
 categories:
